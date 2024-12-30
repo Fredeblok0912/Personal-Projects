@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+// calculates the nth fibonacci number
 int nthfibonaccinumber(int n);
 int main(void)
 {
