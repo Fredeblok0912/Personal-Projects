@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+// c program that takes a command line argument and can restore a word file that has been deleted but not yet overwritten. 
 typedef uint8_t BYTE;
 int main(int argc, char *argv[])
 {
