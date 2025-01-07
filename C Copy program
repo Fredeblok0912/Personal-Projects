@@ -1,0 +1,41 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
+typedef uint8_t BYTE;
+// This c program allows the user to copy any file from their command line. The way to use this code is ./copy input.example output.example with the name of the output being the name of a new file if it doesn't exist. 
+int main(int argc, char* argv[])
+{
+    if (argc != 3)
+    {
+        printf("Error ./copy input.example output.example");
+        return 1;
+    }
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        printf("Error invalid file ");
+        return 2;
+    }
+    BYTE *buffer = malloc(sizeof(BYTE));
+    if (buffer == NULL)
+    {
+        printf("Malloc error");
+        return 3;
+        free(buffer);
+    }
+    FILE *output = fopen(argv[2], "wb");
+    if (output == NULL)
+    {
+        printf("Error opening output file");
+        return 4;
+        free(buffer);
+    }
+    while (fread(buffer, sizeof(BYTE), 1, file) == 1)
+    {
+        fwrite(buffer, sizeof(BYTE), 1, output);
+    }
+    return 0;
+    fclose(output);
+    fclose(file);
+    free(buffer);
+}
